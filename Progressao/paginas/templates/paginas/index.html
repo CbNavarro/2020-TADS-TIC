@@ -1,11 +1,17 @@
 {% extends 'paginas/padrao.html' %}
 
- {% block  conteudo %}
+{% block lateral %}
 
 <div class="py-5 text-light"> 
-
-
+    <a href="sobre/"><button type="button" class="btn btn-info">Diagrama de caso de uso</button></a> <p></p>
+    <a href="sobre2/"><button type="button" class="btn btn-info">Diagrama de classe</button></a>
 </div>
 
+{% endblock %}
+
+ {% block  conteudo %}
+<div class="py-5 text-light"> 
+
+</div>
 {% endblock  %}
 

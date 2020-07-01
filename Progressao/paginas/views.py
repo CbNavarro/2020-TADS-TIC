@@ -16,3 +16,8 @@ class PaginaSobre(TemplateView):
     # Toda classe filha do TemplateView precisa do
     # atributo abaixo para definir um template a ser renderizado
     template_name = 'paginas/sobre.html'
+
+class PaginaSobre2(TemplateView):
+    # Toda classe filha do TemplateView precisa do
+    # atributo abaixo para definir um template a ser renderizado
+    template_name = 'paginas/sobre2.html'

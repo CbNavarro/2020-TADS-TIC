@@ -1,4 +1,5 @@
 {% extends 'paginas/padrao.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,8 +25,22 @@
 
     <div class="col-lg">
         {% block conteudo%} 
-       Corpo
+        <img src="{% static 'img/Diagrama de Caso de Uso.png' %}" width="500" >
+
+        <h5>
+            No diagrama acima mostra os tipos de usuarios e suas acoes. O administrador possui o
+             maior numero de acoes, herdando dos usuarios acima e o Usuario padrao, no caso, o usuario 
+             que nao possui conta no site podendo apenas visualizar os produtos e obviamente, realizar 
+             um Cadastro.<p></p>
+             Ja o usuario Cadastrado pode alem de visualizar, gerenciar sua conta cadastrada e efetuar a
+             compra do produto, entretando tendo com intermediador o Funcionario que ira validar a compra.<p></p>
+            
+             O administrador, pode efetuar qualquer acao acima, bem como cadastrar novos funcionarios e produtos,
+             alem de visualizar e ter controle da movimentacao dos mesmos.
+        </h5>
        {% endblock%} 
+
+
     </div>
 
 </body>

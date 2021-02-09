@@ -1,19 +1,19 @@
 {% extends 'paginas/padrao.html' %}
 
 {% block lateral %}
-
 <div class="py-5 text-light"> 
     <a href="sobre/"><button type="button" class="btn btn-info">Diagrama de caso de uso</button></a> <p></p>
     <a href="sobre2/"><button type="button" class="btn btn-info">Diagrama de classe</button></a><p></p>
+    {% if request.user.is_authenticated %}
     <p class="text-info">CADASTROS</p>
-    <a href="{% url 'cadastrar-tipo' %}"><button type="button" class="btn btn-info">TIPO</button></a><p></p>
-    <a href="{% url 'cadastrar-usuario' %}"><button type="button" class="btn btn-info">Usuario</button></a><p></p>
-    <a href="{% url 'cadastrar-funcionario' %}"><button type="button" class="btn btn-info">Funcionario</button></a><p></p>
-    <a href="{% url 'cadastrar-categoria' %}"><button type="button" class="btn btn-info">Categoria</button></a><p></p>
-    <a href="{% url 'cadastrar-produto' %}"><button type="button" class="btn btn-info">Produto</button></a><p></p>
-    <a href="{% url 'cadastrar-venda' %}"><button type="button" class="btn btn-info">Venda</button></a><p></p>
+    <a href="{% url 'registros-tipo' %}"><button type="button" class="btn btn-info">TIPO</button></a><p></p>
+    <a href="{% url 'registros-usuario' %}"><button type="button" class="btn btn-info">Usuario</button></a><p></p>
+    <a href="{% url 'registros-funcionario' %}"><button type="button" class="btn btn-info">Funcionario</button></a><p></p>
+    <a href="{% url 'registros-categoria' %}"><button type="button" class="btn btn-info">Categoria</button></a><p></p>
+    <a href="{% url 'registros-produto' %}"><button type="button" class="btn btn-info">Produto</button></a><p></p>
+    <a href="{% url 'registros-venda' %}"><button type="button" class="btn btn-info">Venda</button></a><p></p>
+    {% endif %}
 </div>
-
 {% endblock %}
 
  {% block  conteudo %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -33,7 +34,6 @@ class Funcionario(models.Model):
     dt_hr_admicao = models.DateTimeField()
     dt_hr_demicao = models.DateTimeField()
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
-
     def __str__(self):
         return str(self.cod_funcionario) + " - " + self.nome
 
@@ -60,6 +60,6 @@ class Venda(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.PROTECT)
     produto = models.ForeignKey(Produto, on_delete=models.PROTECT)
-
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT)
     def __str__(self):
         return str(self.cod_venda) + " - " + self.dt_hr_compra + " - " + self.produto.nome

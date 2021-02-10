@@ -8,19 +8,22 @@ from .models import Tipo, Usuario, Funcionario, Categoria, Produto, Venda
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from braces.views import GroupRequiredMixin
 
 # Create your views here.
 
 
 # ==================================== CREATE =============================================
-class TipoCreate(LoginRequiredMixin, CreateView):
+class TipoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Tipo
 	fields = ['nome']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-tipo')
 
-class UsuarioCreate(LoginRequiredMixin, CreateView):
+class UsuarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Usuario
 	fields = ['nome', 'cpf', 'dt_nascimento',
@@ -28,7 +31,8 @@ class UsuarioCreate(LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-usuario')
 
-class FuncionarioCreate(LoginRequiredMixin, CreateView):
+class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Funcionario
 	fields = ['nome', 'cpf', 'dt_nascimento',
@@ -36,21 +40,24 @@ class FuncionarioCreate(LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-funcionario')
     
-class CategoriaCreate(LoginRequiredMixin, CreateView):
+class CategoriaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Categoria
 	fields = ['nome']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-categoria')
 
-class ProdutoCreate(LoginRequiredMixin, CreateView):
+class ProdutoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Produto
 	fields = ['nome', 'valor', 'categoria']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-produto')    
 
-class VendaCreate(LoginRequiredMixin, CreateView):
+class VendaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Venda
 	fields = ['dt_hr_compra', 'usuario', 'funcionario', 'produto']
@@ -60,14 +67,16 @@ class VendaCreate(LoginRequiredMixin, CreateView):
 # ================================================================================================
 # ==================================== UPDATE ====================================================
 
-class TipoUpdate(LoginRequiredMixin, UpdateView):
+class TipoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Tipo
 	fields = ['nome']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-tipo')
 
-class UsuarioUpdate(LoginRequiredMixin, UpdateView):
+class UsuarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Usuario
 	fields = ['nome', 'cpf', 'dt_nascimento',
@@ -75,7 +84,8 @@ class UsuarioUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-usuario')
 
-class FuncionarioUpdate(LoginRequiredMixin, UpdateView):
+class FuncionarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Funcionario
 	fields = ['nome', 'cpf', 'dt_nascimento',
@@ -83,21 +93,24 @@ class FuncionarioUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-funcionario')
     
-class CategoriaUpdate(LoginRequiredMixin, UpdateView):
+class CategoriaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Categoria
 	fields = ['nome']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-categoria')
 
-class ProdutoUpdate(LoginRequiredMixin, UpdateView):
+class ProdutoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Produto
 	fields = ['nome', 'valor', 'categoria']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-produto')    
 
-class VendaUpdate(LoginRequiredMixin, UpdateView):
+class VendaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Venda
 	fields = ['dt_hr_compra', 'usuario', 'funcionario', 'produto']
@@ -107,37 +120,43 @@ class VendaUpdate(LoginRequiredMixin, UpdateView):
 # ================================================================================================
 # ==================================== DELETE ====================================================
 
-class TipoDelete(LoginRequiredMixin, DeleteView):
+class TipoDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Tipo
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-tipo')
 
-class UsuarioDelete(LoginRequiredMixin, DeleteView):
+class UsuarioDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Usuario
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-usuario')
 
-class FuncionarioDelete(LoginRequiredMixin, DeleteView):
+class FuncionarioDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Funcionario
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-funcionario')
     
-class CategoriaDelete(LoginRequiredMixin, DeleteView):
+class CategoriaDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Categoria
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-categoria')
 
-class ProdutoDelete(LoginRequiredMixin, DeleteView):
+class ProdutoDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Produto
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-produto')    
 
-class VendaDelete(LoginRequiredMixin, DeleteView):
+class VendaDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Venda
 	template_name = 'cadastros/formularioCadastro-excluir.html'

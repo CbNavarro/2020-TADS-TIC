@@ -24,6 +24,15 @@
         {% block conteudo%} 
         <hr>
 
+        {% if request.user.is_authenticated %}
+
+        <p class="lead">
+            <strong>
+                VOCE NAO POSSUI PRIVILEGIOS NECESSARIOS PARA ESTA ACAO
+            </strong>
+        </p>
+        <a href="/"><button type="button" class="btn btn-outline-secondary">Voltar</button></a>
+        {% else %}
         <div class="col-md-5 max-auto "  align='center'>
             <form method="post">
                 {% csrf_token %}
@@ -35,7 +44,7 @@
                 </button>
             </form>
         </div>
-
+        {% endif %}
 
 
        {% endblock%} 

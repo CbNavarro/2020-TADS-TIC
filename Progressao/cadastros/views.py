@@ -193,3 +193,7 @@ class ProdutoList(ListView):
 class VendaList(ListView):
 	model = Venda
 	template_name = 'cadastros/registros/venda.html' 
+
+	def get_queryset(self):
+		self.object_list = Venda.objects.filter(usuario=self.request.user)
+		return self.object_list

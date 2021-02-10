@@ -52,7 +52,7 @@ class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
 
     def __str__(self):
-        return "Categoria " + self.categoria.nome + ": " + str(self.cod_produto) + " - " + self.nome + " - " + self.valor
+        return "Categoria " + self.categoria.nome + ": " + str(self.cod_produto) + " - " + self.nome + " - " + str(self.valor)
 
 class Venda(models.Model):
     cod_venda = models.AutoField(primary_key=True)

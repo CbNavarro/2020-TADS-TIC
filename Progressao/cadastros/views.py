@@ -64,6 +64,11 @@ class VendaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-venda') 
 
+	def form_valid(self, form):
+		form.instance.usuario = self.request.user
+		url = super().form_valid(form)
+		return url
+
 # ================================================================================================
 # ==================================== UPDATE ====================================================
 

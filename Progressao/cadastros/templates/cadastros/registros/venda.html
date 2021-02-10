@@ -35,6 +35,7 @@
                     <th>Usuario</th>
                     <th>Funcionario</th>
                     <th>Produto</th>
+                    <th>Vendedor</th> 
                     <th>Acoes</th>
                 </tr>
 
@@ -44,7 +45,7 @@
                     <td>{{ venda.usuario }}</td>
                     <td>{{ venda.funcionario }}</td>
                     <td>{{ venda.produto }}</td>
-
+                    <td>{{ venda.usuario }}</td>
                     <td>
                         <a href="{% url 'editar-venda' venda.pk %}" class="btn btn-outline-success btn-sm" title="Editar"><i class="fa fa-pencil " aria-hidden="true"></i></a>
                         <a href="{% url 'excluir-venda' venda.pk %}" class="btn btn-outline-danger btn-sm" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>

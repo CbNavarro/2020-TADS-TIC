@@ -10,6 +10,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
 
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -121,6 +122,11 @@ class VendaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	fields = ['dt_hr_compra', 'usuario', 'funcionario', 'produto']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-venda') 
+
+	def get_object(self, queryset=None):
+		self.object = get_object_or_404(Venda, pk=self.kwargs['pk'], usuario=self.request.user)
+
+		return self.object
 
 # ================================================================================================
 # ==================================== DELETE ====================================================

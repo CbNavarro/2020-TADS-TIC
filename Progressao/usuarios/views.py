@@ -1,7 +1,9 @@
 from django.views.generic.edit import CreateView
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from .forms import UsuarioForm
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
+
 
 class UsuarioCreate(CreateView):
     template_name = 'cadastros/formularioCadastro.html'
@@ -14,3 +16,10 @@ class UsuarioCreate(CreateView):
         context['titulo'] = 'Cadastro de Usuario'
         context['botao'] = 'Cadastrar'
         return context
+
+    def form_valid(self, form):
+        grupo = get_object_or_404(Group, name='moder')
+        url = super().form_valid(form)
+        self.object.groups.add(grupo)
+        self.object.save()
+        return url

@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% block titulo %}
-    <title>Cadastro</title>
+    <title>{{ titulo }}</title>
     {% endblock %}
 
 </head>
 
 <body>
     {% block menu %}
-    <h4 class="white">Cadastro</h4>
+    <h4 class="white">{{ titulo }}</h4>
     {% endblock %}
     <div class="col-lg-2">
         {% block lateral %}
@@ -36,7 +36,7 @@
             {{ form|crispy }}
 
             <button type="submit" class="btn btn-outline-success">
-                    Cadastrar
+                    {{botao}}
             </button>
         </form>
 

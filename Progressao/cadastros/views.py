@@ -23,6 +23,13 @@ class TipoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-tipo')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Tipos'
+		context['botao'] = 'Cadastrar'
+		return context
+
 class UsuarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	group_required = u"admin's"
 	login_url = reverse_lazy('login')
@@ -32,6 +39,13 @@ class UsuarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-usuario')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Usuarios'
+		context['botao'] = 'Cadastrar'
+		return context
+
 class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	group_required = u"admin's"
 	login_url = reverse_lazy('login')
@@ -40,6 +54,13 @@ class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     'email', 'senha', 'salario', 'dt_hr_admicao', 'dt_hr_demicao', 'tipo']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-funcionario')
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Funcionarios'
+		context['botao'] = 'Cadastrar'
+		return context
     
 class CategoriaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	group_required = u"admin's"
@@ -49,13 +70,27 @@ class CategoriaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-categoria')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Categorias'
+		context['botao'] = 'Cadastrar'
+		return context
+
 class ProdutoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	group_required = u"admin's"
 	login_url = reverse_lazy('login')
 	model = Produto
 	fields = ['nome', 'valor', 'categoria']
 	template_name = 'cadastros/formularioCadastro.html'
-	success_url = reverse_lazy('registros-produto')    
+	success_url = reverse_lazy('registros-produto') 
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Produtos'
+		context['botao'] = 'Cadastrar'
+		return context   
 
 class VendaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 	group_required = u"admin's"
@@ -70,6 +105,13 @@ class VendaCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 		url = super().form_valid(form)
 		return url
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Cadastro de Venda'
+		context['botao'] = 'Cadastrar'
+		return context
+
 # ================================================================================================
 # ==================================== UPDATE ====================================================
 
@@ -81,6 +123,13 @@ class TipoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-tipo')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Tipo'
+		context['botao'] = 'Alterar'
+		return context
+
 class UsuarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
@@ -90,6 +139,13 @@ class UsuarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-usuario')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Usuario'
+		context['botao'] = 'Alterar'
+		return context
+
 class FuncionarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
@@ -98,6 +154,13 @@ class FuncionarioUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     'email', 'senha', 'salario', 'dt_hr_admicao', 'dt_hr_demicao', 'tipo']
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-funcionario')
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Funcionario'
+		context['botao'] = 'Alterar'
+		return context
     
 class CategoriaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	group_required = [u"admin's", u"moder"]
@@ -107,13 +170,27 @@ class CategoriaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	template_name = 'cadastros/formularioCadastro.html'
 	success_url = reverse_lazy('registros-categoria')
 
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Categoria'
+		context['botao'] = 'Alterar'
+		return context
+
 class ProdutoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	group_required = [u"admin's", u"moder"]
 	login_url = reverse_lazy('login')
 	model = Produto
 	fields = ['nome', 'valor', 'categoria']
 	template_name = 'cadastros/formularioCadastro.html'
-	success_url = reverse_lazy('registros-produto')    
+	success_url = reverse_lazy('registros-produto')
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Produto'
+		context['botao'] = 'Alterar'
+		return context    
 
 class VendaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 	group_required = [u"admin's", u"moder"]
@@ -125,8 +202,14 @@ class VendaUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
 
 	def get_object(self, queryset=None):
 		self.object = get_object_or_404(Venda, pk=self.kwargs['pk'], usuario=self.request.user)
-
 		return self.object
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		context['titulo'] = 'Editar Venda'
+		context['botao'] = 'Alterar'
+		return context
 
 # ================================================================================================
 # ==================================== DELETE ====================================================
@@ -172,6 +255,10 @@ class VendaDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
 	model = Venda
 	template_name = 'cadastros/formularioCadastro-excluir.html'
 	success_url = reverse_lazy('registros-venda') 
+
+	def get_object(self, queryset=None):
+		self.object = get_object_or_404(Venda, pk=self.kwargs['pk'], usuario=self.request.user)
+		return self.object
 
 # ================================================================================================
 # ==================================== LIST ======================================================
